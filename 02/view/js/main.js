@@ -33,6 +33,8 @@ pecaSelectWork.onmessage = function(e){
 }
 //------------------- pecamove
 pecaMoveWork = new Worker ("view/js/pecaMove.js");
+//------------------- pecamove
+pecaElevarWork = new Worker ("view/js/pecaElevar.js");
 //---------------
 pecaCapturaWork = new Worker ("view/js/pecaCaptura.js");
 
@@ -70,6 +72,13 @@ function pecaMove(peca, destino) {
   data.destino = destino;
   pecaMoveWork.postMessage(data);
   peliculaEle.innerHTML = "";
+}
+function pecaElevar(peca, tipo) {
+  data = new Object();
+  data.id = gameId;
+  data.peca = peca;
+  data.tipo = tipo;
+  pecaElevarWork.postMessage(data);
 }
 function pecaCaptura(peca, destino){
   data = new Object();

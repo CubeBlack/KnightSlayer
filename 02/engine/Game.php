@@ -45,6 +45,7 @@ class Game
     $gameTable = Game::inTable($id);
     $retorno["id"] = $id;
     //------
+    $retorno["status"] = "none";
     //echo $gameTable["tabuleiro"]."\n";
     $retorno["pecas"] = json_decode($gameTable["tabuleiro"]);
     //-------
@@ -59,7 +60,13 @@ class Game
     }
     else {$retorno["vez"] = "outro";
     }
+    //----------- elevar?
+    $retorno["elevar"] = "true";
+    //----------- checkmat
+    $retorno["checkmat"] = "true";
+
     return $retorno;
+
   }
   static function peca($jogoId,$peca){
     $tabuleiro = Game::tabuleiro($jogoId);
@@ -152,5 +159,11 @@ class Game
       "WHERE id = '$game'"
     );
     Game::passarVez($game);
+  }
+  static function elevar(){
+
+  }
+  static function gameOver(){
+
   }
 }

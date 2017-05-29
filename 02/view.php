@@ -19,9 +19,7 @@
       </div>
       <hr>
       <svg id="screen" width="100%" height="100%">
-
         <image id="tabuleiro" xlink:href="view/img/tabuleiro.svg" x="0" y="0" height="450" width="450"/>
-
         <g id="pecas"></g>
         <g id="peliculas"></g>
       </svg>

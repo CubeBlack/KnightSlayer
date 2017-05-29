@@ -7,6 +7,9 @@ svg{
 .other{
   background-color: rgb(255,200,200);
 }
+svg #box{
+  fill:rgba(200,200,255,0.5);
+}
 #pecas image,#peliculas image{
   cursor: pointer;
 }
