@@ -1,1 +1,0 @@
-Láqueses, projeto Moiras
