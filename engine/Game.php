@@ -9,7 +9,7 @@ class Game
   {
     global $dbs;
     $id = User::id();
-    $retorno = $dbs->tableSelect("jogo","WHERE player1 = '$id' or player2 = '$id'");
+    $retorno = $dbs->tableSelect("jogo","WHERE (player1 = '$id' or player2 = '$id') and status = 'desafiando'");
     return $retorno;
   }
   static function desafiar($id){
@@ -56,9 +56,14 @@ class Game
       if($retorno["cor"]=="branco" && Peca::nameForY($value->posicao)==8 && $value->tipo==1){
           $retorno["elevar"] = $key;
       }
-    }
 
-    $retorno["status"] = "none";
+      if($value->tipo==6) $reiBranco = true;
+      if($value->tipo==11)  $reiPreto = true;
+    }
+    if(!isset($reiBranco)) Game::gameOver($id,$gameTable["player1"]);
+    if(!isset($reiPreto)) Game::gameOver($id,$gameTable["player2"]);
+
+    $retorno["status"] = $gameTable["status"];
     //echo $gameTable["tabuleiro"]."\n";
 
     //-------
@@ -185,7 +190,13 @@ class Game
       "WHERE id = '$gameId'"
     );
   }
-  static function gameOver(){
-
+  static function gameOver($gameId,$ganhador){
+    global $dbs;
+    $dbs->TableUpdateOne(
+      "jogo",
+      "status",
+      $ganhador,
+      "WHERE id = '$gameId'"
+    );
   }
 }

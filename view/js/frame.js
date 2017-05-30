@@ -17,10 +17,10 @@ function posicaoForY(posicao){
 
     respostaAll = JSON.parse(xmlHttp.responseText);
     respostaObj = new Object();
-    console.log(respostaAll.status);
+
     respostaObj.msg = respostaAll.msg;
     respostaObj.pecas = "";
-    if(respostaAll.status != "false"){
+    if(respostaAll.status == "desafiando"){
       if(respostaAll.elevar != "false"){
         if (respostaAll.cor=="branco") {
           respostaObj.pecas += "<rect id=\"box\" x=\"0\" y=\"200\" width=\"450\" height=\"150\" />";
@@ -57,8 +57,8 @@ function posicaoForY(posicao){
       }
     }
     else {
-      //gameOver
-      respostaObj.pecas = "<circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"green\" stroke-width=\"4\" fill=\"yellow\" />";
+      respostaObj.pecas += "<rect id=\"box\" x=\"0\" y=\"200\" width=\"450\" height=\"150\" />";
+      respostaObj.pecas += "<text x=\"50\" y=\"300\" font-family=\"Verdana\"  font-size=\"55\"> Game Over </text>";
     }
     respostaObj.vez = respostaAll.vez;
     postMessage(respostaObj);
