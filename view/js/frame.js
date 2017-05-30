@@ -17,18 +17,29 @@ function posicaoForY(posicao){
 
     respostaAll = JSON.parse(xmlHttp.responseText);
     respostaObj = new Object();
-
+    console.log(respostaAll.status);
     respostaObj.msg = respostaAll.msg;
     respostaObj.pecas = "";
     if(respostaAll.status != "false"){
-      if(respostaAll.elevar=="true"){
-        respostaObj.pecas += "<rect id=\"box\" x=\"0\" y=\"200\" width=\"450\" height=\"150\" />";
-        func = "pecaElevar(" + respostaAll.elevar + ","+ 4 +")";
-        respostaObj.pecas += "<image onClick = \"" + func +";\" xlink:href=\"view/skin/p3.svg\" x=\"100\" y=\"250\" height=\"50px\" width=\"50px\"/>";
-        func = "pecaElevar(" + respostaAll.elevar + ","+ 5 +")";
-        respostaObj.pecas += "<image onClick = \"" + func +";\" xlink:href=\"view/skin/p4.svg\" x=\"200\" y=\"250\" height=\"50px\" width=\"50px\"/>";
-        func = "pecaElevar(" + respostaAll.elevar + ","+ 6 +")";
-        respostaObj.pecas += "<image onClick = \"" + func +";\" xlink:href=\"view/skin/p5.svg\" x=\"300\" y=\"250\" height=\"50px\" width=\"50px\"/>";
+      if(respostaAll.elevar != "false"){
+        if (respostaAll.cor=="branco") {
+          respostaObj.pecas += "<rect id=\"box\" x=\"0\" y=\"200\" width=\"450\" height=\"150\" />";
+          func = "pecaElevar(" + respostaAll.elevar + ","+ 3 +")";
+          respostaObj.pecas += "<image onClick = \"" + func +";\" xlink:href=\"view/skin/p3.svg\" x=\"100\" y=\"250\" height=\"50px\" width=\"50px\"/>";
+          func = "pecaElevar(" + respostaAll.elevar + ","+ 4 +")";
+          respostaObj.pecas += "<image onClick = \"" + func +";\" xlink:href=\"view/skin/p4.svg\" x=\"200\" y=\"250\" height=\"50px\" width=\"50px\"/>";
+          func = "pecaElevar(" + respostaAll.elevar + ","+ 5 +")";
+          respostaObj.pecas += "<image onClick = \"" + func +";\" xlink:href=\"view/skin/p5.svg\" x=\"300\" y=\"250\" height=\"50px\" width=\"50px\"/>";
+        }
+        else {
+          respostaObj.pecas += "<rect id=\"box\" x=\"0\" y=\"200\" width=\"450\" height=\"150\" />";
+          func = "pecaElevar(" + respostaAll.elevar + ","+ 9 +")";
+          respostaObj.pecas += "<image onClick = \"" + func +";\" xlink:href=\"view/skin/p9.svg\" x=\"100\" y=\"250\" height=\"50px\" width=\"50px\"/>";
+          func = "pecaElevar(" + respostaAll.elevar + ","+ 10 +")";
+          respostaObj.pecas += "<image onClick = \"" + func +";\" xlink:href=\"view/skin/p10.svg\" x=\"200\" y=\"250\" height=\"50px\" width=\"50px\"/>";
+          func = "pecaElevar(" + respostaAll.elevar + ","+ 11 +")";
+          respostaObj.pecas += "<image onClick = \"" + func +";\" xlink:href=\"view/skin/p11.svg\" x=\"300\" y=\"250\" height=\"50px\" width=\"50px\"/>";
+        }
       }
       for (var i = 0; i < 32; i++) {
         if(typeof respostaAll.pecas[i] == "undefined") continue;

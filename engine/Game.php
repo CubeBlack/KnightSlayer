@@ -46,13 +46,14 @@ class Game
     $gameTable = Game::inTable($id);
     $retorno["id"] = $id;
     $retorno["pecas"] = json_decode($gameTable["tabuleiro"]);
-    $cor = Game::meCor($id);
+    $retorno["cor"] = Game::meCor($id);
+    $retorno["elevar"] = "false";
     foreach ($retorno["pecas"] as $key => $value) {
-      echo "[$cor,".Peca::nameForY($value->posicao).",{$value->tipo}]";
-      if($cor=="preto" && Peca::nameForY($value->posicao)==1 && $value->tipo==7){
+      //echo "[$cor,".Peca::nameForY($value->posicao).",{$value->tipo}]";
+      if($retorno["cor"]=="preto" && Peca::nameForY($value->posicao)==1 && $value->tipo==7){
           $retorno["elevar"] = $key;
       }
-      if($cor == "branco"&&Peca::nameForY($value->posicao)==8){
+      if($retorno["cor"]=="branco" && Peca::nameForY($value->posicao)==8 && $value->tipo==1){
           $retorno["elevar"] = $key;
       }
     }
@@ -171,8 +172,18 @@ class Game
     );
     Game::passarVez($game);
   }
-  static function elevar(){
+  static function elevar($gameId, $peca, $tipo){
+    $tabuleiroObj = Game::tabuleiro($gameId);
+    $tabuleiroObj["pecas"]->$peca->tipo = $tipo;
+    $tabuleiroJson = json_encode($tabuleiroObj["pecas"], JSON_FORCE_OBJECT);
+    global $dbs;
 
+    $dbs->TableUpdateOne(
+      "jogo",
+      "tabuleiro",
+      $tabuleiroJson,
+      "WHERE id = '$gameId'"
+    );
   }
   static function gameOver(){
 
