@@ -41,8 +41,8 @@ class User
     global $dbs, $dbl;
     if($tabela = $dbs->tableSelect("user","WHERE email = '$email' and password = '$pass'")){
         global $dl;
-        $dbl->valueIncert("userId",$tabela[0]["id"]);
-        $dbl->valueIncert("username",$tabela[0]["username"]);
+        $dbl->valueIncert("userId","{$tabela[0]["id"]}");
+        $dbl->valueIncert("username","{$tabela[0]["username"]}");
         return true;
     }
   }

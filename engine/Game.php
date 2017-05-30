@@ -2,6 +2,7 @@
 /**
  *
  */
+ require_once "Peca.php";
 class Game
 {
   static function meGames($value='')
@@ -44,10 +45,21 @@ class Game
   static function tabuleiro($id){
     $gameTable = Game::inTable($id);
     $retorno["id"] = $id;
-    //------
+    $retorno["pecas"] = json_decode($gameTable["tabuleiro"]);
+    $cor = Game::meCor($id);
+    foreach ($retorno["pecas"] as $key => $value) {
+      echo "[$cor,".Peca::nameForY($value->posicao).",{$value->tipo}]";
+      if($cor=="preto" && Peca::nameForY($value->posicao)==1 && $value->tipo==7){
+          $retorno["elevar"] = $key;
+      }
+      if($cor == "branco"&&Peca::nameForY($value->posicao)==8){
+          $retorno["elevar"] = $key;
+      }
+    }
+
     $retorno["status"] = "none";
     //echo $gameTable["tabuleiro"]."\n";
-    $retorno["pecas"] = json_decode($gameTable["tabuleiro"]);
+
     //-------
     if ($gameTable["player1"]==User::id()) {
       $retorno["msg"] = $gameTable["player1msg"];
@@ -60,11 +72,10 @@ class Game
     }
     else {$retorno["vez"] = "outro";
     }
-    //----------- elevar?
-    $retorno["elevar"] = "true";
+
+
     //----------- checkmat
     $retorno["checkmat"] = "true";
-
     return $retorno;
 
   }
