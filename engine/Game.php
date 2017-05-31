@@ -9,14 +9,14 @@ class Game
   {
     global $dbs;
     $id = User::id();
-    $retorno = $dbs->tableSelect("jogo","WHERE (player1 = '$id' or player2 = '$id') and status = 'desafiando'");
+    $retorno = $dbs->tableSelect("ks_jogo","WHERE (player1 = '$id' or player2 = '$id') and status = 'desafiando'");
     return $retorno;
   }
   static function desafiar($id){
     global $dbs;
     require_once 'gameNewArr.php';
     $tabuleiroJson = json_encode($gameNewArr,JSON_FORCE_OBJECT);
-    $newGameId = $dbs->TableInsert("jogo", array(
+    $newGameId = $dbs->TableInsert("ks_jogo", array(
         "null",
         $tabuleiroJson,
         User::id(),
@@ -31,7 +31,7 @@ class Game
   }
   static function playersName($id){
     global $dbs;
-    $gameTable = $dbs->tableSelect("jogo","WHERE id = '$id'")[0];
+    $gameTable = $dbs->tableSelect("ks_jogo","WHERE id = '$id'")[0];
 
     $retorno[1] = User::username($gameTable["player1"]);
     $retorno[2] = User::username($gameTable["player2"]);
@@ -39,7 +39,7 @@ class Game
   }
   static function inTable($id){
     global $dbs;
-    $gameTable = $dbs->tableSelect("jogo","WHERE id = '$id'")[0];
+    $gameTable = $dbs->tableSelect("ks_jogo","WHERE id = '$id'")[0];
     return $gameTable;
   }
   static function tabuleiro($id){
@@ -58,7 +58,7 @@ class Game
       }
 
       if($value->tipo==6) $reiBranco = true;
-      if($value->tipo==11)  $reiPreto = true;
+      if($value->tipo==12)  $reiPreto = true;
     }
     if(!isset($reiBranco)) Game::gameOver($id,$gameTable["player1"]);
     if(!isset($reiPreto)) Game::gameOver($id,$gameTable["player2"]);
@@ -109,7 +109,7 @@ class Game
     $tabuleiroJson = json_encode($tabuleiroObj["pecas"], JSON_FORCE_OBJECT);
     global $dbs;
     $dbs->TableUpdateOne(
-      "jogo",
+      "ks_jogo",
       "tabuleiro",
       $tabuleiroJson,
       "WHERE id = '$gameId'"
@@ -127,7 +127,7 @@ class Game
         $vez = $game["player1"];
       }
       $dbs->tableUpdateOne(
-        "jogo",
+        "ks_jogo",
         "vez",
         $vez,
         "WHERE  id = '$gameId'"
@@ -151,7 +151,7 @@ class Game
   static function msgSet($gameId,$numPlayer,$msg){
     global $dbs;
     $dbs->tableUpdateOne(
-      "jogo",
+      "ks_jogo",
       "player{$numPlayer}msg",
       "$msg",
       "WHERE id = '$gameId'"
@@ -170,7 +170,7 @@ class Game
     }
     $tabuleiroJson = json_encode($newPecas,JSON_FORCE_OBJECT);
     $dbs->tableUpdateOne(
-      "jogo",
+      "ks_jogo",
       "tabuleiro",
       $tabuleiroJson,
       "WHERE id = '$game'"
@@ -184,7 +184,7 @@ class Game
     global $dbs;
 
     $dbs->TableUpdateOne(
-      "jogo",
+      "ks_jogo",
       "tabuleiro",
       $tabuleiroJson,
       "WHERE id = '$gameId'"
@@ -193,7 +193,7 @@ class Game
   static function gameOver($gameId,$ganhador){
     global $dbs;
     $dbs->TableUpdateOne(
-      "jogo",
+      "ks_jogo",
       "status",
       $ganhador,
       "WHERE id = '$gameId'"

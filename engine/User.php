@@ -12,7 +12,7 @@ class User
 {
   static function add($nick = "",$email = "",$pass = ""){
     global $dbs;
-    return $dbs->TableInsert("user", array(
+    return $dbs->TableInsert("ks_user", array(
       $nick,
       $email,
       $pass,
@@ -35,11 +35,11 @@ class User
     if ($id=="") {
       return $dbl->valueSelect("username");
     }
-    return $dbs->tableSelectOne("User","username","WHERE id='$id'");
+    return $dbs->tableSelectOne("ks_user","username","WHERE id='$id'");
   }
   static function logon($email = "",$pass = "") {
     global $dbs, $dbl;
-    if($tabela = $dbs->tableSelect("user","WHERE email = '$email' and password = '$pass'")){
+    if($tabela = $dbs->tableSelect("ks_user","WHERE email = '$email' and password = '$pass'")){
         global $dl;
         $dbl->valueIncert("userId","{$tabela[0]["id"]}");
         $dbl->valueIncert("username","{$tabela[0]["username"]}");
@@ -50,10 +50,10 @@ class User
     global $dbs;
     if($id==""){
         $id = User::id();
-        return $dbs->tableSelect("user","WHERE id = '$id';")[0];
+        return $dbs->tableSelect("ks_user","WHERE id = '$id';")[0];
     }
     else {
-      return $dbs->tableSelect("user","WHERE id = '$id';")[0];
+      return $dbs->tableSelect("ks_user","WHERE id = '$id';")[0];
     }
   }
   static function sair()
@@ -64,7 +64,7 @@ class User
   static function all(){
       global $dbs;
       $id = User::id();
-    $retorno = $dbs->tableSelect("user","");
+    $retorno = $dbs->tableSelect("ks_user","");
     return $retorno;
   }
 }
