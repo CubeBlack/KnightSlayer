@@ -1,17 +1,17 @@
 page = {};
 page.loaded = function(){
 	//------------ configuracao
-	term.server = "http://localhost/GitHub/EddysWorld/server/eddysworld_server.term.php"
+	term.server = "http://git/KnightSlayer/server/server-terminal.php";
 	//------------------
 	console.log("page.load");
 	page.statusLbl = document.getElementById("statusLbl");
 	page.comandInp = document.getElementById("comandInp");
 	page.content = document.getElementById("content");
-	
+
 	//mensagem de boas vindas do servidor
 	term.com("",page.receved);
 }
-page.inputEnter = function (){
+page.inputEnter = function (event){
 	var keynum;
 	if(window.event) { //IE
 		keynum = event.keyCode
