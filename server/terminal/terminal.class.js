@@ -30,4 +30,4 @@ term.send = function(comander,retorno){
 	}
 	//return this.receved;
 }
-console.log("terminal.js");
+console.log("termjinal_v1.1");

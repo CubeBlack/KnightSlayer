@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <title>Terminal</title>
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/terminal.css">
@@ -11,16 +12,30 @@
   <body onload="page.loaded();">
     <section id="content" class="bloco">
     </section>
-    <section id="query" class="bloco">
-      <p><input type="text" id="comandInp" onKeyPress = "page.inputEnter(event)" autofocus></p>
-      <p><button type="button" onclick="term.send();" name="button" >Enter</button>
-		<label id="statusLbl">Empty!<label>
+	<header>
+		<a><img src="img/cubeblackicon.svg"></a>
 		<a href="ducumentation">
 			<img src="img/docbotton.svg">
 		</a>
-		<a href="ducumentation">
+		<label id="statusLbl">Empty!<label>	
+		<a href="#">
 			<img src="img/configbotton.svg">
 		</a>
+
+	</header>
+    <section id="query" class="bloco">
+      <p>
+		<input type="text" id="comandInp" onKeyPress = "page.inputEnter(event)" autofocus>
+
+		<a href="#">
+			<img src="img/anterior.svg">
+		</a>
+		<a href="#">
+			<img src="img/proximo.svg">
+		</a>
+		
+
+
 	   </p>
 		
     </section>

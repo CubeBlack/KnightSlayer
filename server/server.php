@@ -12,12 +12,26 @@ function __autoload($className){
 // variaveis globais
 $config = new Config();
 $dbl = new DBLocal();
-//$db = new Database ();
-//$user = new User();
-//$gameObject = new GameObject();
-//$world = new World();
+
+try {
+	$db = new PDO("mysql:host={$config->db_host};dbname={$config->db_name}", $config->db_user, $config->db_password);
+	
+} catch (PDOException $e) {
+	echo "Error!: " . $e->getMessage() . "\n";
+}
+
+
+$user = new User();
 
 //$grimorio = new Grimorio();
-
+$help = 
+	"___ HELP ___\n"."\n".
+	
+	$config->help()."\n".
+	$dbl->help()."\n".
+	$user->help()."\n".
+	
+	"_____________"
+;
 
 $term = New Terminal();

@@ -1,7 +1,7 @@
 page = {};
 page.loaded = function(){
 	//------------ configuracao
-	term.server = "http://git/KnightSlayer/server/server-terminal.php";
+	term.server = "http://knightslayer/server/server-terminal.php";
 	//------------------
 	console.log("page.load");
 	page.statusLbl = document.getElementById("statusLbl");

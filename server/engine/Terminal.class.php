@@ -68,7 +68,7 @@
 			global $user,$world;
 			//apenas desenvolvedor
 			//if($user->tUser == User::tUser_developer){
-				global $dbl, $db, $config,$gameObject;
+				global $help, $dbl, $db, $config,$gameObject;
 			//}
 			//-------------
 			
