@@ -1,10 +1,4 @@
 <?php
-
-// ___________ exibir ou não os erros do sistema
-//ini_set('display_errors',1);
-//ini_set('display_startup_erros',1);
-//error_reporting(E_ALL);
-
 function __autoload($className){
   $url = "engine/$className.class.php";
   require_once $url;
@@ -24,14 +18,11 @@ try {
 $user = new User();
 
 //$grimorio = new Grimorio();
-$help = 
-	"___ HELP ___\n"."\n".
-	
-	$config->help()."\n".
-	$dbl->help()."\n".
-	$user->help()."\n".
-	
-	"_____________"
-;
-
-$term = New Terminal();
+$help = "Variaveis Globais
+________________
+* config:
+* user:
+________________
+";
+$vars = array("config","user","dado","db","help","dbl");
+$term = New Terminal($vars);

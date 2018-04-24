@@ -7,7 +7,7 @@
 	}
 	$comStr = $_REQUEST["comander"];
 	if($comStr == ""){
-		echo "Terminal KinigthSlayer. \n";
+		echo "-------------  Terminal KinigthSlayer  -------------\n";
 		echo "Bem vindo [user.nick]!\n";
 		goto fim;
 	}

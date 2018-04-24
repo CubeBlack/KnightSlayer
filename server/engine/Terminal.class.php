@@ -6,8 +6,8 @@
 		public $params;
 	}
 	Class Terminal{
-		function __construct(){
-			 
+		function __construct($vars){
+			$this->vars = $vars;
 		}
 		function chamada($comStr){
 			$this->com = new TerminalComander();
@@ -61,18 +61,14 @@
 			$this->com->params = $params;
 			$this->com->nodes = $nodes;
 			//var_dump($this->com);
+			//echo $this->com->params[0];
 		}
 		function call(){
-			//------------variaveis acesiveis pelo terminal
-			//todos
-			global $user,$world;
-			//apenas desenvolvedor
-			//if($user->tUser == User::tUser_developer){
-				global $help, $dbl, $db, $config,$gameObject;
-			//}
-			//-------------
-			
-			//------------------------
+			//---------------------
+			foreach($this->vars as $ar){
+				global ${$ar};
+			}
+			//---------------------
 			if(isset(${$this->com->nodes[0]})){
 				$retorno = ${$this->com->nodes[0]};
 			}
