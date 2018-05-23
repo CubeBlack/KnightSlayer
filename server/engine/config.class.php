@@ -11,16 +11,16 @@ class Config{
     //------------
   }
 	public function auto(){
-		global $db,$config;
-		$sql = file_get_contents("engine/user.sql");
-		$db->query($sql);
+		global $db,$config,$user;
+		$sql = file_get_contents("engine/database.sql");
+		$retorno = $db->query($sql);
 		if($db->errorInfo()[1] != null){
 			if($config->show_error){
 				return "Mysql Erro ".$db->errorInfo()[1] . ":". $db->errorInfo()[2];
 			}
-			return "fail";
+			return "Fail!";
 		}
-		return "ok";
+		return "Ok!";
 
 	}
 	public function help(){

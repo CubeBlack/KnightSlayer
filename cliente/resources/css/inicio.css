@@ -1,0 +1,18 @@
+#novidades{
+	float:left;
+	width:calc(80% - 50px);
+}
+#post-block{
+}
+#post-block #msg{
+	background-color:white;
+}
+#players{
+	float:right;
+	width:calc(20% - 0px);
+}
+#user-block{
+	display:block;
+	border:1px solid white;
+	margin: 2px;
+}

@@ -3,85 +3,48 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<link href="favicon.bmp" rel="icon" type="image/xicon">
 		<link href="favicon.ico" rel="icon" type="image/xicon">
 		<title>KnigtSlayer...</title>
-		<link rel="stylesheet" type="text/css" href="resources/css/tema1.css">
-		<link rel="stylesheet" type="text/css" href="resources/css/index.css">
+		
+		<link rel="stylesheet" type="text/css" href="resources/css/page.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/popup.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/inicio.css">
+		<script src="https://localhost/Teminal/v002.0/terminal_v2.0.class.js" charset="utf-8"></script>
+		<script src="resources/js/page.js" charset="utf-8"></script>
+		<script src="resources/js/user.js" charset="utf-8"></script>
+		<script src="resources/js/inicio.js" charset="utf-8"></script>
+		
 	</head>
-	<body>
-		<header>
-			<h1>K-Slayer | TimeLine</h1>
-			<span>User</span>
-			<nav>
-				<ul>
-					
-					<li><a href= "">Inicio</a></li>
-					<li><a href="wirespace.html">WireSpace</a></li>
-					<li><a>Continuar or jogar</a></li>
-				</ul>
-			</nav>
-		</header>
-		<div> <!-- About -->
-			<section>
-				<div class="collun">
-					<img src="resources\img\desenhando.svg">
-				</div>
-				<div class="collun">
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-				</div>
-				<div >
-				Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-									Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-									Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>				Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-				</div>
+	<body onload="page.load();page.inicioLoad();">
+			<script src="resources/js/load.js" charset="utf-8"></script>
+			<header>
+				<h1>K-Slayer | TimeLine</h1>
+				<action id="userId" onclick="page.user();;">User</action>
+				<nav>
+					<ul>
+						<li><a href= "">Inicio</a></li>
+						<li><a href="wirespace.html">WireSpace</a></li>
+						<li><a href="jogo.html">Continuar or jogar</a></li>
+					</ul>
+				</nav>
+			</header>
+			<section>Pendencias</section>
+			<div id="novidades">
+				novidades
+			</div>
+			<section id="players">
+				players
 			</section>
-			<section>
-				<img src="#">
-				<div >
-				Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-									Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-									Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>				Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
-					Bla, bla, bla, bla<br>
+
+			<div id="popUp" class="popUP-false">
+				<div id="popUp-base" onclick="page.popUp()"></div>
+				<div id="popUp-content" >
 				</div>
-			</section>
-		</div>
-		<section>
-		Lista de Pendencias
-		</section>
-		<section>
-			Novidades da WireSpace e de seus jogos
-		</section>
-		<section>
-			Site Mape
-		</section>
-		<footer>
-			CubeBlack by Daniel Lima
-		</footer>
+			</div>
+			<footer>
+				<a href="www.githube.cubeblack.io">CubeBlack</a>[<a href="facebook.com/dannke">Dannke</a>] by <a href="limapage.esy.es">Daniel Lima</a>
+			</footer>
 	</body>
+	
 </html>

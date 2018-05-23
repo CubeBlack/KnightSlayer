@@ -16,13 +16,14 @@ try {
 
 
 $user = new User();
+$post = new Post();
+$game = new Game();
 
-//$grimorio = new Grimorio();
 $help = "Variaveis Globais
 ________________
 * config:
 * user:
 ________________
 ";
-$vars = array("config","user","dado","db","help","dbl");
+$vars = array("config","user","db","help","dbl","post","game");
 $term = New Terminal($vars);

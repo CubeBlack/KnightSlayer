@@ -1,0 +1,43 @@
+#game-cabecario{
+	top:50px;
+	position:absolute;
+	width:40%;
+	right:0;
+	text-align:center;
+}
+#game-cabecario h1{
+	display:inline;
+	
+}
+#game_display{
+
+}
+#game_display img{
+	position:fixed;
+	display:block;
+	padding:0;
+	margin:0;
+	
+}
+#game_casas div{
+	border:3px solid;
+	border-color:rgb(98,47,0);
+	position: absolute;
+	padding:0;
+	margin:0;
+}
+.casa-black{
+	background-color:black;
+	background-color:rgb(128,64,0);
+}
+.casa-white{
+	background-color:white;
+	background-color:rgb(255,180,120);
+}
+#game-detalhes{
+	position:absolute;
+	top:100px;
+	width:40%;
+	right:0;
+	text-align:center;
+}
